@@ -12,9 +12,7 @@ int main(int argc, char **argv)
 
   MPI_CHECK(MPI_Init(&argc, &argv));
 
-  MPI_CHECK(MPI_Comm_rank(MPI_COMM_WORLD, &rank));
-  MPI_CHECK(MPI_Comm_size(MPI_COMM_WORLD, &nprocs));
-  MPI_CHECK(MPI_Get_processor_name(hostname, &count));
+  init_mpi_params(&rank, &nprocs, hostname);
   target = (rank + 1) % 2;
   assert(nprocs == 2);
 

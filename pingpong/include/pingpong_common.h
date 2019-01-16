@@ -25,6 +25,15 @@
     assert(MPI_SUCCESS == mpi_errno);				\
   } while (0)
 
+static void init_mpi_params(int *rank, int *nprocs, char hostname[])
+{
+  int length;
+
+  MPI_CHECK(MPI_Comm_rank(MPI_COMM_WORLD, rank));
+  MPI_CHECK(MPI_Comm_size(MPI_COMM_WORLD, nprocs));
+  MPI_CHECK(MPI_Get_processor_name(hostname, &length));
+}
+
 static void print_latency(const size_t size, const int loop, const double time)
 {
   double latency = time / loop / 2 * 1e6; // usec
