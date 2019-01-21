@@ -24,8 +24,6 @@ int main(int argc, char **argv)
   target = (rank + 1) % 2;
   assert(nprocs == 2);
 
-  printf("rank = %d of %d on %s, target = %d\n", rank, nprocs, hostname, target);
-
   // Initialize IB device
   struct ibv_device **dev_list;
   dev_list = ibv_get_device_list(NULL);
