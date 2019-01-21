@@ -29,6 +29,8 @@ struct ibv_comm_params {
   uint64_t r_src_addr;
   uint32_t src_psn;
   uint32_t dest_psn;
+  uint32_t dest_rkey;
+  uint64_t dest_addr;
 };
 
 static void modify_qp(struct ibv_comm_params *comm_params)
